@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/resume/",
+      "destination": "https://www.linkedin.com/in/tom-dugnoille/",
+      "permanent": false
+    }
+  ]
+}
