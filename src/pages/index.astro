@@ -1,16 +1,51 @@
 ---
-import "../styles/global.css";
+import { SEO } from "astro-seo";
+import { getImage, Image } from "astro:assets";
 import profilePicture from "../assets/profile-picture.jpg";
-import { Image } from "astro:assets";
+import "../styles/global.css";
+
+const title = "Tom Dugnoille";
+const description = "Tom Dugnoille's personal website";
+
+const profilePictureImage = await getImage({
+  src: profilePicture,
+  format: "webp",
+  width: 512,
+  height: 512,
+});
+const profilePictureUrl = new URL(
+  profilePictureImage.src,
+  Astro.url,
+).toString();
 ---
 
-<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tom Dugnoille</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <SEO
+      title={title}
+      description={description}
+      twitter={{
+        card: "summary_large_image",
+        title: title,
+        description: description,
+        image: profilePictureUrl,
+      }}
+      openGraph={{
+        basic: {
+          title: title,
+          type: "website",
+          image: profilePictureUrl,
+          url: "https://dugnoille.com",
+        },
+        optional: {
+          description: description,
+        },
+      }}
+    />
   </head>
   <body class="flex min-h-screen items-center justify-center bg-gray-50 p-4">
     <div
