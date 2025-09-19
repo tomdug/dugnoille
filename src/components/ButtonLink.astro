@@ -1,0 +1,40 @@
+---
+import { Icon } from "astro-icon/components";
+
+export interface Props {
+  href: string;
+  variant?: "primary" | "secondary" | "tertiary";
+  target?: "_blank" | "_self" | "_parent" | "_top";
+  rel?: string;
+  class?: string;
+  icon?: string;
+}
+
+const {
+  href,
+  variant = "primary",
+  target = "_blank",
+  rel = target === "_blank" ? "noopener noreferrer" : undefined,
+  class: className = "",
+  icon,
+} = Astro.props;
+
+// Define variant styles
+const variantStyles = {
+  primary: "bg-blue-600 hover:bg-blue-700",
+  secondary: "bg-blue-800 hover:bg-blue-900",
+  tertiary: "bg-gray-600 hover:bg-gray-700",
+};
+
+const baseStyles =
+  "block w-full rounded-lg px-6 py-3 font-medium text-white transition-colors duration-200";
+const finalClasses =
+  `${baseStyles} ${variantStyles[variant]} ${className}`.trim();
+---
+
+<a href={href} target={target} rel={rel} class={finalClasses}>
+  <div class="flex items-center justify-center gap-2">
+    {icon && <Icon name={icon} class="h-5 w-5" />}
+    <slot />
+  </div>
+</a>

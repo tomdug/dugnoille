@@ -1,0 +1,23 @@
+---
+export interface Props {
+  class?: string;
+}
+
+// Base64 encoded email: tom@dugnoille.com
+// Used to obfuscate email from bots
+const encodedEmail = "dG9tQGR1Z25vaWxsZS5jb20=";
+
+const { class: className } = Astro.props;
+const classes = ["email-decode", className].filter(Boolean).join(" ");
+---
+
+<span class={classes} data-email={encodedEmail}></span>
+
+<script>
+  document.querySelectorAll(".email-decode").forEach((el) => {
+    const emailElement = el as HTMLElement;
+    if (emailElement.dataset.email) {
+      emailElement.textContent = atob(emailElement.dataset.email);
+    }
+  });
+</script>

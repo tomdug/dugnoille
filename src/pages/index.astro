@@ -2,6 +2,8 @@
 import { SEO } from "astro-seo";
 import { getImage, Image } from "astro:assets";
 import profilePictureSrc from "../assets/profile-picture.jpg";
+import ButtonLink from "../components/ButtonLink.astro";
+import EncodedEmail from "../components/EncodedEmail.astro";
 import "../styles/global.css";
 
 const title = "Tom Dugnoille";
@@ -58,25 +60,25 @@ const profilePictureUrl = new URL(profilePicture.src, Astro.url).toString();
           height={256}
         />
         <h1 class="mb-2 text-3xl font-bold text-gray-900">Tom Dugnoille</h1>
-        <p class="text-gray-600">dugnoille.com</p>
+        <EncodedEmail class="text-gray-600" />
       </div>
 
       <div class="space-y-4">
-        <a
-          href="mailto:tom@dugnoille.com"
-          class="block w-full rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition-colors duration-200 hover:bg-blue-700"
+        <ButtonLink
+          href="https://tom.dugnoille.com/call/"
+          variant="primary"
+          icon="mdi:calendar"
         >
-          Email Me
-        </a>
+          Book a call with me
+        </ButtonLink>
 
-        <a
+        <ButtonLink
           href="https://linkedin.com/in/tom-dugnoille"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="block w-full rounded-lg bg-blue-800 px-6 py-3 font-medium text-white transition-colors duration-200 hover:bg-blue-900"
+          variant="secondary"
+          icon="mdi:linkedin"
         >
           LinkedIn Profile
-        </a>
+        </ButtonLink>
       </div>
     </div>
   </body>
