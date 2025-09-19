@@ -6,6 +6,11 @@
       "source": "/resume/",
       "destination": "https://www.linkedin.com/in/tom-dugnoille/",
       "permanent": false
+    },
+    {
+      "source": "/call/",
+      "destination": "https://calendar.app.google/KBPNXBLJeMUvcmPi7",
+      "permanent": false
     }
   ]
 }
