@@ -12,8 +12,8 @@ const description = "Tom Dugnoille's personal website";
 const profilePicture = await getImage({
   src: profilePictureSrc,
   format: "webp",
-  width: 512,
-  height: 512,
+  width: 800,
+  height: 800,
 });
 
 const profilePictureUrl = new URL(profilePicture.src, Astro.url).toString();
